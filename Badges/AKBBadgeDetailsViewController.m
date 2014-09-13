@@ -37,6 +37,7 @@
     self = [super init];
     if (self) {
         _chainScrollerUndoStack = [NSMutableArray array];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadInterface) name:@"AKBBadgeDidAddNewDayNotification" object:nil];
     }
     return self;
 }
@@ -156,6 +157,11 @@
     [self.delegate badgeDetailsViewControllerDidDelete:self];
     
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)reloadInterface
+{
+    [_chainScroller reloadData];
 }
 
 #pragma mark - Horizontal scroller data source methods

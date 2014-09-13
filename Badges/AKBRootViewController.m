@@ -47,7 +47,7 @@
     self = [super init];
     if (self) {
         _badges = [[AKBDataManager sharedInstance] getBadges];
-        //_updateTimer = [NSTimer scheduledTimerWithTimeInterval:8 target:self selector:@selector(updateBadges) userInfo:nil repeats:YES]; // Set up a timer that adds a day to the badges for every given time interval
+        _updateTimer = [NSTimer scheduledTimerWithTimeInterval:8 target:self selector:@selector(updateBadges) userInfo:nil repeats:YES]; // Set up a timer that adds a day to the badges for every given time interval
         _startingIndex = 0;
     }
     return self;

@@ -112,7 +112,9 @@
             break;
     }
     
-    [self.allDays addObject:newDay];    
+    [self.allDays addObject:newDay];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"AKBBadgeDidAddNewDayNotification" object:self];
 }
 
 - (void)toggleReset
