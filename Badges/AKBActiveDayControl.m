@@ -35,12 +35,14 @@
 
 - (void)reloadButtons
 {
+    // Set up the button labels.
     NSArray *weekdays = [NSArray arrayWithObjects:@"Sun", @"Mon", @"Tue", @"Wed", @"Thu", @"Fri", @"Sat", nil];
     
     for (UIView *view in self.subviews) {
         [view removeFromSuperview];
     }
     
+    // Set up a button that corresponds to each day of the week.
     CGFloat xVal = 0;
     for (int i = 0; i < 7; i++) {
         UIButton *dayButton = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -54,6 +56,7 @@
         xVal += dayButton.bounds.size.width;
     }
     
+    // Set the color of each button to blue if its associated day is set to 1 in the bitmask.
     if (self.activeDays & Sunday) {
         ((UIButton *)[self.subviews objectAtIndex:kSunday]).backgroundColor = [UIColor blueColor];
     }
@@ -80,6 +83,7 @@
 
 - (void)toggleActiveDay:(UIButton *)sender
 {
+    // Depending on the button that was tapped, check if its associated digit in the bitmask is 1 or 0, then set it to the opposite.
     switch (sender.tag) {
         case 0:
             if (self.activeDays & Sunday) {
